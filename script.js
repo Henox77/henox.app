@@ -307,4 +307,5 @@ function initTilt() {
 function revealProfile() {
     gsap.to('.profile', { duration: 1.5, opacity: 1, scale: 1, ease: 'expo.out' });
     gsap.to('.avatar-section, .content-section, .location-box', { duration: 1, opacity: 1, y: 0, stagger: 0.2, ease: 'power4.out', delay: 0.3 });
+    gsap.to('.floating-player', { duration: 1, opacity: 1, ease: 'power2.out', delay: 0.8 });
 }
