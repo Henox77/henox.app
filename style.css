@@ -123,11 +123,15 @@ body {
     border-radius: 50%;
     position: relative;
     padding: 6px;
-    background: #111;
+    background: #050505; /* Black background like Discord */
     margin-top: -70px;
     border: 1px solid var(--glass-border);
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8);
     z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
 }
 
 .banner-img {
@@ -168,10 +172,11 @@ body {
 }
 
 .avatar {
-    width: 130px;
-    height: 130px;
-    border-radius: 2px;
-    border: 1px solid rgba(255, 255, 255, 0.05);
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+    display: block;
     filter: grayscale(0.2) contrast(1.1);
 }
 
@@ -495,8 +500,9 @@ body {
     }
 
     .avatar {
-        width: 108px;
-        height: 108px;
+        width: 100%;
+        height: 100%;
+        border-radius: 50%;
     }
 
     .username, .presence-bar, .profile-links, .badges-row {
@@ -541,8 +547,9 @@ body {
     }
 
     .avatar {
-        width: 88px;
-        height: 88px;
+        width: 100%;
+        height: 100%;
+        border-radius: 50%;
     }
 
     .floating-player {
