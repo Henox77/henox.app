@@ -1,6 +1,5 @@
 const DISCORD_USER_ID = '1462496241693753558';
 
-
 const PROFILE_LINKS = {
     discord: 'https://discord.com/users/1462496241693753558',
     spotify: 'https://open.spotify.com/intl-tr/artist/2FIVkPwm0NzIkR0qzAMqtW?si=uOeTW2BxQpaGRi8yYlDI8A',
@@ -8,22 +7,9 @@ const PROFILE_LINKS = {
     github: 'https://github.com/Henox77'
 };
 
-let currentSongIndex = 0;
-let isPlaying = false;
-let audioElement = null;
 let spotifyTrackUrl = null;
 let spotifyProgressInterval = null;
 let spotifyTimestamps = null;
-
-function initMusicPlayer() {
-    audioElement = document.getElementById('background-music');
-    if (!audioElement) return;
-    audioElement.volume = 0.3;
-    loadSong(currentSongIndex);
-    audioElement.addEventListener('play', () => { isPlaying = true; });
-    audioElement.addEventListener('pause', () => { isPlaying = false; });
-    audioElement.addEventListener('ended', () => { playNext(); });
-}
 
 function initSpotifyClick() {
     const player = document.querySelector('.spotify-music-player');
@@ -50,67 +36,34 @@ function startSpotifyProgress(timestamps) {
     if (!timestamps || !timestamps.start || !timestamps.end) return;
     spotifyTimestamps = { start: Number(timestamps.start), end: Number(timestamps.end) };
     const progressBar = document.getElementById('track-progress-bar');
+    const currentTimeEl = document.getElementById('current-time');
+    const totalTimeEl = document.getElementById('total-time');
     if (!progressBar) return;
+
+    const formatTime = (ms) => {
+        const seconds = Math.floor((ms / 1000) % 60);
+        const minutes = Math.floor((ms / 1000) / 60);
+        return `${minutes}:${seconds.toString().padStart(2, '0')}`;
+    };
+
     const update = () => {
         if (!spotifyTimestamps) return;
         const duration = spotifyTimestamps.end - spotifyTimestamps.start;
-        if (!Number.isFinite(duration) || duration <= 0) {
-            progressBar.style.width = '0%';
-            return;
-        }
+        if (!Number.isFinite(duration) || duration <= 0) return;
+
         const now = Date.now();
-        const elapsed = now - spotifyTimestamps.start;
-        const ratio = Math.min(1, Math.max(0, elapsed / duration));
+        const elapsed = Math.min(duration, Math.max(0, now - spotifyTimestamps.start));
+        const ratio = elapsed / duration;
+
         progressBar.style.width = `${(ratio * 100).toFixed(2)}%`;
+        if (currentTimeEl) currentTimeEl.textContent = formatTime(elapsed);
+        if (totalTimeEl) totalTimeEl.textContent = formatTime(duration);
     };
     update();
     spotifyProgressInterval = setInterval(update, 500);
 }
 
-function loadSong(index) {
-    if (index < 0 || index >= MUSIC_PLAYLIST.length) return;
-    currentSongIndex = index;
-    const song = MUSIC_PLAYLIST[index];
-    if (!audioElement || !song) return;
-    audioElement.src = song.file;
-    audioElement.load();
-    if (isPlaying) audioElement.play().catch(() => { });
-}
-
-function togglePlayPause() {
-    if (!audioElement) return;
-    if (isPlaying) {
-        audioElement.pause();
-    } else {
-        audioElement.play().catch(() => { });
-    }
-}
-
-function playPrevious() {
-    let newIndex = currentSongIndex - 1;
-    if (newIndex < 0) newIndex = MUSIC_PLAYLIST.length - 1;
-    loadSong(newIndex);
-}
-
-function playNext() {
-    let newIndex = currentSongIndex + 1;
-    if (newIndex >= MUSIC_PLAYLIST.length) newIndex = 0;
-    loadSong(newIndex);
-}
-
-function updatePlayPauseUI(playing) {
-    const playPauseBtn = document.getElementById('play-pause-btn');
-    if (!playPauseBtn) return;
-    if (playing) {
-        playPauseBtn.classList.add('playing');
-    } else {
-        playPauseBtn.classList.remove('playing');
-    }
-}
-
 let lanyardData = null;
-let updateInterval = null;
-
 async function fetchDiscordData() {
     try {
         const response = await fetch(`https://api.lanyard.rest/v1/users/${DISCORD_USER_ID}`);
@@ -311,7 +264,7 @@ async function init() {
     initTilt();
     initSpotifyClick();
     await fetchDiscordData();
-    updateInterval = setInterval(() => { fetchDiscordData(); }, 10000);
+    setInterval(() => { fetchDiscordData(); }, 10000);
 }
 
 if (document.readyState === 'loading') {
@@ -330,7 +283,6 @@ function initIntroOverlay() {
         overlay.style.opacity = '0';
         overlay.style.pointerEvents = 'none';
         revealProfile();
-        initMusicPlayer();
         window.setTimeout(() => { overlay.remove(); }, 1000);
     };
     overlay.addEventListener('click', dismiss);
