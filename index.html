@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Henox</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@100;300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+</head>
+
+<body>
+    <div class="scanlines"></div>
+
+    <div class="background-container">
+        <video autoplay loop muted playsinline class="background-media">
+            <source src="assets/arkaplan.mp4" type="video/mp4">
+        </video>
+    </div>
+
+    <div id="intro-overlay" class="intro-overlay">
+        <div class="intro-enter-text">Click to enter</div>
+    </div>
+
+    <main class="page">
+        <div class="profile">
+            <div class="profile-banner">
+                <img src="assets/banner.jpg" alt="" class="banner-img" onerror="this.src='assets/arkaplan1.mp4'; this.onerror=null;">
+            </div>
+
+            <div class="profile-main">
+                <div class="avatar-section">
+                    <div class="avatar-container">
+                        <img id="discord-avatar" src="" alt="Avatar" class="avatar">
+                    </div>
+                </div>
+
+                <div class="content-section">
+                    <div class="username-section">
+                        <h1 id="discord-username" class="username">
+                            <span id="username-text">Henox</span>
+                            <span id="discord-discriminator" class="discriminator"></span>
+                            <div id="badges-container" class="badges-row"></div>
+                        </h1>
+                        <div id="discord-presence" class="presence-bar">
+                            <div id="status-dot" class="status-dot"></div>
+                            <span id="status-text" class="status-text">OFFLINE</span>
+                        </div>
+                    </div>
+
+                    <div id="custom-status-card" class="custom-status-card hidden">
+                        <div id="custom-status-text" class="custom-status"></div>
+                    </div>
+
+                    <div id="activities-list" class="activities-list"></div>
+
+                    <div class="social-links">
+                        <div class="profile-links">
+                            <a href="#" id="github-link" target="_blank" class="profile-link" title="GitHub">
+                                <i class="fab fa-github"></i>
+                            </a>
+                            <a href="#" id="instagram-link" target="_blank" class="profile-link" title="Instagram">
+                                <i class="fab fa-instagram"></i>
+                            </a>
+                            <a href="#" id="discord-link" target="_blank" class="profile-link" title="Discord">
+                                <i class="fab fa-discord"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="location-box">
+                        <i class="fa-solid fa-location-dot"></i>
+                        <span>ISTANBUL</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <section class="spotify-music-player inactive floating-player">
+        <div class="album-cover-container">
+            <img id="album-cover" src="" alt="" class="album-cover hidden">
+            <div class="album-placeholder"></div>
+        </div>
+        <div class="spotify-info">
+            <div class="song-header">
+                <div class="song-details">
+                    <div id="song-title">Spotify</div>
+                    <div id="song-artist" class="artist-name">Listening...</div>
+                </div>
+            </div>
+            <div class="track-progress-container">
+                <div id="track-progress-bar" class="track-progress-bar"></div>
+            </div>
+        </div>
+    </section>
+
+    <audio id="background-music" loop></audio>
+
+    <div id="custom-tooltip" class="custom-tooltip"></div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
