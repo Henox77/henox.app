@@ -375,14 +375,24 @@ body {
     z-index: 1;
 }
 
-.song-title { font-size: 14px; font-weight: 700; margin-bottom: 2px; }
+.spotify-info {
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.song-title { font-size: 14px; font-weight: 700; margin-bottom: 2px; color: #fff; }
 .song-artist { font-size: 11px; color: var(--text-dim); }
 
-.track-progress {
-    height: 3px;
-    background: rgba(255, 255, 255, 0.05);
+.track-progress-container {
+    height: 4px;
+    background: rgba(255, 255, 255, 0.08);
     margin-top: 10px;
-    border-radius: 10px;
+    border-radius: 4px;
+    overflow: hidden;
+    position: relative;
 }
 
 .track-progress-bar {
@@ -390,6 +400,18 @@ body {
     background: var(--spotify-green);
     box-shadow: 0 0 10px var(--spotify-green);
     width: 0%;
+    transition: width 0.5s linear;
+}
+
+.track-time {
+    display: flex;
+    justify-content: space-between;
+    font-size: 9px;
+    font-weight: 700;
+    color: var(--text-dim);
+    margin-top: 5px;
+    letter-spacing: 0.05em;
+    font-family: monospace;
 }
 
 .profile-links {
@@ -440,13 +462,89 @@ body {
 
 @media (max-width: 700px) {
     .profile {
-        grid-template-columns: 1fr;
-        padding: 25px;
-        gap: 25px;
-        text-align: center;
+        width: 95%;
+        margin: 20px auto;
     }
-    .avatar-section, .badges-row, .username, .presence-bar, .profile-links {
+
+    .profile-main {
+        grid-template-columns: 1fr;
+        padding: 30px 20px;
+        text-align: center;
+        gap: 20px;
+    }
+
+    .avatar-section {
+        margin-top: 0;
+    }
+
+    .avatar-container {
+        width: 120px;
+        height: 120px;
+        margin: -60px auto 0; /* Center and overlap */
+    }
+
+    .avatar {
+        width: 108px;
+        height: 108px;
+    }
+
+    .username, .presence-bar, .profile-links, .badges-row {
         justify-content: center;
+    }
+
+    .username {
+        font-size: 28px;
+    }
+
+    .floating-player {
+        bottom: 20px;
+        right: 20px;
+        width: 260px;
+        transform: scale(0.9);
+        animation: float-mobile 6s ease-in-out infinite;
+    }
+
+    @keyframes float-mobile {
+        0%, 100% { transform: scale(0.9) translateY(0); }
+        50% { transform: scale(0.9) translateY(-10px); }
+    }
+
+    .location-box {
+        position: relative;
+        bottom: 0;
+        right: 0;
+        margin-top: 20px;
+        justify-content: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .profile-banner {
+        height: 100px;
+    }
+
+    .avatar-container {
+        width: 100px;
+        height: 100px;
+        margin: -50px auto 0;
+    }
+
+    .avatar {
+        width: 88px;
+        height: 88px;
+    }
+
+    .floating-player {
+        width: 220px;
+        bottom: 15px;
+        right: 50%;
+        transform: translateX(50%) scale(0.85); /* Center-ish on small mobile */
+        animation: float-small 6s ease-in-out infinite;
+    }
+
+    @keyframes float-small {
+        0%, 100% { transform: translateX(50%) scale(0.85) translateY(0); }
+        50% { transform: translateX(50%) scale(0.85) translateY(-8px); }
     }
 }
 
