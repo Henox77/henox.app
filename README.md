@@ -18,4 +18,3 @@
 - **FontAwesome** 
 
 ---
-*Henox tarafından ❤️ ile oluşturuldu*
