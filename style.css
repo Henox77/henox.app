@@ -325,6 +325,17 @@ body {
     z-index: 999;
     animation: float 6s ease-in-out infinite;
     box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+    opacity: 0; /* Initially hidden for reveal animation */
+    pointer-events: none;
+    transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.spotify-music-player.inactive {
+    display: none !important;
+}
+
+.spotify-music-player:not(.inactive) {
+    pointer-events: auto;
 }
 
 @keyframes float {
@@ -537,14 +548,15 @@ body {
     .floating-player {
         width: 220px;
         bottom: 15px;
-        right: 50%;
-        transform: translateX(50%) scale(0.85); /* Center-ish on small mobile */
+        left: 50%;
+        right: auto;
+        transform: translateX(-50%) scale(0.85); /* Correct centering */
         animation: float-small 6s ease-in-out infinite;
     }
 
     @keyframes float-small {
-        0%, 100% { transform: translateX(50%) scale(0.85) translateY(0); }
-        50% { transform: translateX(50%) scale(0.85) translateY(-8px); }
+        0%, 100% { transform: translateX(-50%) scale(0.85) translateY(0); }
+        50% { transform: translateX(-50%) scale(0.85) translateY(-8px); }
     }
 }
 
