@@ -3,7 +3,7 @@ const DISCORD_USER_ID = '1462496241693753558';
 const PROFILE_LINKS = {
     discord: 'https://discord.com/users/1462496241693753558',
     spotify: 'https://open.spotify.com/intl-tr/artist/2FIVkPwm0NzIkR0qzAMqtW?si=uOeTW2BxQpaGRi8yYlDI8A',
-    instagram: 'https://www.instagram.com/efeyylw/',
+    instagram: '',
     github: 'https://github.com/Henox77'
 };
 
