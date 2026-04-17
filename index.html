@@ -1,72 +1,50 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Henox</title>
+<section class="contact" id="contact">
 
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@100;300;400;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
-</head>
+    <div class="contact-grid">
 
-<body>
+        <!-- DISCORD CARD -->
+        <div class="contact-card-wrapper">
+            <div class="discord-card">
 
-<div class="background-container">
-    <video autoplay loop muted playsinline class="background-media">
-        <source src="assets/arkaplan1.mp4" type="video/mp4">
-    </video>
-</div>
+                <div class="dc-top-section">
 
-<main class="page">
-    <div class="profile">
+                    <!-- Banner -->
+                    <div class="dc-banner">
+                        <img src="assets/banner.jpg">
+                    </div>
 
-        <div class="profile-banner">
-            <img src="assets/banner.jpg" class="banner-img">
-        </div>
-
-        <div class="profile-main">
-
-            <div class="avatar-section">
-                <div class="avatar-container">
                     <!-- SABİT AVATAR -->
-                    <img src="assets/pp.jpg" class="avatar">
-                </div>
-            </div>
+                    <div class="dc-avatar-wrap">
+                        <img class="dc-avatar" src="assets/pp.jpg">
+                        <div class="dc-status-dot online"></div>
+                    </div>
 
-            <div class="content-section">
-
-                <div class="username-section">
                     <!-- SABİT İSİM -->
-                    <h1 class="username">Henox</h1>
+                    <div class="dc-display-name">Henox</div>
+                    <div class="dc-username">@henox</div>
 
-                    <div class="presence-bar">
-                        <div class="status-dot"></div>
-                        <span class="status-text">ONLINE</span>
+                    <div class="dc-status-text">
+                        <span class="dc-status-label online">ONLINE</span>
                     </div>
+
+                    <div class="dc-separator"></div>
+
+                    <div class="dc-id">ID: 1462496241693753558</div>
                 </div>
 
-                <!-- SOSYAL LİNKLER (SADELEŞTİRİLDİ) -->
-                <div class="social-links">
-                    <div class="profile-links">
-                        <a href="#" target="_blank" class="profile-link">
-                            <i class="fab fa-github"></i>
-                        </a>
-                    </div>
-                </div>
-
-                <div class="location-box">
-                    <span>ISTANBUL</span>
+                <div class="dc-bottom-section">
+                    <button class="discord-copy-btn" onclick="navigator.clipboard.writeText('henox')">
+                        📋 COPY USERNAME
+                    </button>
                 </div>
 
             </div>
         </div>
+
     </div>
-</main>
+</section>
 
 <!-- FOOTER -->
 <footer class="footer">
     <p>© 2026 Henox & Efe</p>
 </footer>
-
-</body>
-</html>
