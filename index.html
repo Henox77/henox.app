@@ -1,50 +1,112 @@
-<section class="contact" id="contact">
+<!DOCTYPE html>
+<html lang="en">
 
-    <div class="contact-grid">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Henox</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@100;300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+</head>
 
-        <!-- DISCORD CARD -->
-        <div class="contact-card-wrapper">
-            <div class="discord-card">
+<body>
+    <div class="scanlines"></div>
 
-                <div class="dc-top-section">
+    <div class="background-container">
+        <video autoplay loop muted playsinline class="background-media">
+            <source src="assets/arkaplan1.mp4" type="video/mp4">
+        </video>
+    </div>
 
-                    <!-- Banner -->
-                    <div class="dc-banner">
-                        <img src="assets/banner.jpg">
+    <div id="intro-overlay" class="intro-overlay">
+        <div class="intro-enter-text">Click to enter</div>
+    </div>
+
+    <main class="page">
+        <div class="profile">
+            <div class="profile-banner">
+                <img src="assets/banner.jpg" alt="" class="banner-img" onerror="this.src='assets/arkaplan1.mp4'; this.onerror=null;">
+            </div>
+
+            <div class="profile-main">
+                <div class="avatar-section">
+                    <div class="avatar-container">
+                        <img id="discord-avatar" src="" alt="Avatar" class="avatar">
                     </div>
-
-                    <!-- SABİT AVATAR -->
-                    <div class="dc-avatar-wrap">
-                        <img class="dc-avatar" src="assets/pp.jpg">
-                        <div class="dc-status-dot online"></div>
-                    </div>
-
-                    <!-- SABİT İSİM -->
-                    <div class="dc-display-name">Henox</div>
-                    <div class="dc-username">@henox</div>
-
-                    <div class="dc-status-text">
-                        <span class="dc-status-label online">ONLINE</span>
-                    </div>
-
-                    <div class="dc-separator"></div>
-
-                    <div class="dc-id">ID: 1462496241693753558</div>
                 </div>
 
-                <div class="dc-bottom-section">
-                    <button class="discord-copy-btn" onclick="navigator.clipboard.writeText('henox')">
-                        📋 COPY USERNAME
-                    </button>
-                </div>
+                <div class="content-section">
+                    <div class="username-section">
+                        <h1 id="discord-username" class="username">
+                            <span id="username-text">Henox</span>
+                            <span id="discord-discriminator" class="discriminator"></span>
+                            <div id="badges-container" class="badges-row"></div>
+                        </h1>
+                        <div id="discord-presence" class="presence-bar">
+                            <div id="status-dot" class="status-dot"></div>
+                            <span id="status-text" class="status-text">OFFLINE</span>
+                        </div>
+                    </div>
 
+                    <div id="custom-status-card" class="custom-status-card hidden">
+                        <div id="custom-status-text" class="custom-status"></div>
+                    </div>
+
+                    <div id="activities-list" class="activities-list"></div>
+
+                    <div class="social-links">
+                        <div class="profile-links">
+                            <a href="#" id="github-link" target="_blank" class="profile-link" title="GitHub">
+                                <i class="fab fa-github"></i>
+                            </a>
+                            <a href="#" id="instagram-link" target="_blank" class="profile-link" title="Instagram">
+                                <i class="fab fa-instagram"></i>
+                            </a>
+                            <a href="#" id="discord-link" target="_blank" class="profile-link" title="Discord">
+                                <i class="fab fa-discord"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="location-box">
+                        <i class="fa-solid fa-location-dot"></i>
+                        <span>ISTANBUL</span>
+                    </div>
+                </div>
             </div>
         </div>
+    </main>
 
-    </div>
-</section>
+    <section class="spotify-music-player inactive floating-player">
+        <div class="album-cover-container">
+            <img id="album-cover" src="" alt="" class="album-cover hidden">
+            <div class="album-placeholder"></div>
+        </div>
+        <div class="spotify-info">
+            <div class="song-header">
+                <div class="song-details">
+                    <div id="song-title">Spotify</div>
+                    <div id="song-artist" class="artist-name">Listening...</div>
+                </div>
+            </div>
+            <div class="track-progress-container">
+                <div id="track-progress-bar" class="track-progress-bar"></div>
+            </div>
+            <div class="track-time">
+                <span id="current-time">0:00</span>
+                <span id="total-time">0:00</span>
+            </div>
+        </div>
+    </section>
 
-<!-- FOOTER -->
-<footer class="footer">
-    <p>© 2026 Henox & Efe</p>
-</footer>
+
+    <div id="custom-tooltip" class="custom-tooltip"></div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
