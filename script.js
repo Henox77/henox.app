@@ -128,7 +128,7 @@ function updateActivities(activities) {
 }
 
 function updateAvatar(discordUser) {
-    const avatarImg = document.getElementById('discord-avatar');
+  //  const avatarImg = document.getElementById('discord-avatar');
     if (!discordUser || !avatarImg) return;
     let avatarUrl;
     if (discordUser.avatar) {
