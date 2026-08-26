@@ -1,0 +1,379 @@
+@import url('https://fonts.googleapis.com/css2?family=Carrois+Gothic+SC&family=Doto:wght@100..900&family=Figtree:ital,wght@0,300..900;1,300..900&family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  /* Default: Pure Black & Electric Purple Theme */
+  --bg-page: #040208;
+  --bg-surface: #0e071b;
+  --bg-surface-hover: #180c2e;
+  --bg-dock: rgba(14, 7, 27, 0.9);
+  --bg-muted: #1e0e38;
+  --bg-muted-subtle: rgba(168, 85, 247, 0.15);
+  --bg-overlay: rgba(4, 2, 8, 0.95);
+
+  --text-ink: #f5f3ff;
+  --text-body: #e9d5ff;
+  --text-muted: #c084fc;
+  --text-faint: #9333ea;
+  --text-brand: #d8b4fe;
+
+  --border-hairline: rgba(168, 85, 247, 0.2);
+  --border-dashed: rgba(168, 85, 247, 0.3);
+  --border-reticle: rgba(192, 132, 252, 0.9);
+  --border-divider: rgba(168, 85, 247, 0.15);
+
+  --status-active: #a855f7;
+  --status-ping: rgba(168, 85, 247, 0.7);
+  --metric-star: #c084fc;
+
+  --shadow-tactile: 
+    0px 32px 64px -16px rgba(4, 2, 8, 0.8),
+    0px 16px 32px -8px rgba(4, 2, 8, 0.6),
+    0px 8px 16px -4px rgba(147, 51, 234, 0.25),
+    0px 4px 8px -2px rgba(147, 51, 234, 0.2),
+    0px -8px 16px -1px rgba(4, 2, 8, 0.4),
+    0px 2px 4px -1px rgba(168, 85, 247, 0.25),
+    0px 0px 0px 1px #040208,
+    inset 0px 0px 0px 1px rgba(168, 85, 247, 0.2),
+    inset 0px 1px 0px 0px rgba(192, 132, 252, 0.3);
+
+  --shadow-nav-dock:
+    0px 8px 24px -4px rgba(147, 51, 234, 0.35),
+    0px 4px 12px -2px rgba(4, 2, 8, 0.5),
+    0px 0px 0px 1px rgba(168, 85, 247, 0.3);
+
+  --calendar-cell-empty: #0e071b;
+  --calendar-cell-lvl-1: #2e1065;
+  --calendar-cell-lvl-2: #581c87;
+  --calendar-cell-lvl-3: #9333ea;
+  --calendar-cell-lvl-4: #c084fc;
+}
+
+.light {
+  /* Derived Light Theme Extension */
+  --bg-page: #fafafa;
+  --bg-surface: #f4f4f5;
+  --bg-surface-hover: #e4e4e7;
+  --bg-dock: rgba(255, 255, 255, 0.85);
+  --bg-muted: #e4e4e7;
+  --bg-muted-subtle: rgba(228, 228, 231, 0.6);
+  --bg-overlay: rgba(0, 0, 0, 0.5);
+
+  --text-ink: #09090b;
+  --text-body: #27272a;
+  --text-muted: #71717a;
+  --text-faint: #a1a1aa;
+  --text-brand: #000000;
+
+  --border-hairline: rgba(0, 0, 0, 0.08);
+  --border-dashed: rgba(0, 0, 0, 0.12);
+  --border-reticle: rgba(0, 0, 0, 0.9);
+  --border-divider: rgba(0, 0, 0, 0.06);
+
+  --status-active: #09090b;
+  --status-ping: rgba(0, 0, 0, 0.4);
+  --metric-star: #ca8a04;
+
+  --calendar-cell-empty: #ebedf0;
+  --calendar-cell-lvl-1: #c4c8d0;
+  --calendar-cell-lvl-2: #8f94a3;
+  --calendar-cell-lvl-3: #585c69;
+  --calendar-cell-lvl-4: #18191c;
+
+  --shadow-tactile:
+    0px 2px 4px rgba(0, 0, 0, 0.06),
+    0px 1px 2px rgba(0, 0, 0, 0.04),
+    0px 0px 0px 1px rgba(0, 0, 0, 0.08),
+    inset 0px 1px 0px rgba(255, 255, 255, 0.9);
+
+  --shadow-nav-dock:
+    0px 8px 16px -4px rgba(0, 0, 0, 0.08),
+    0px 2px 4px -2px rgba(0, 0, 0, 0.04),
+    0px 0px 0px 1px rgba(0, 0, 0, 0.08);
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    scrollbar-gutter: stable;
+    background-color: var(--bg-page);
+    color: var(--text-ink);
+    font-family: 'Figtree', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  }
+
+  body {
+    background-color: var(--bg-page);
+    color: var(--text-ink);
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  ::selection {
+    background: var(--text-ink);
+    color: var(--bg-page);
+  }
+}
+
+/* 60fps Hardware-Accelerated Circular View Transitions */
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation: none !important;
+  mix-blend-mode: normal !important;
+  height: 100%;
+  overflow: clip;
+}
+
+::view-transition-old(root) {
+  z-index: 1;
+}
+
+::view-transition-new(root) {
+  z-index: 9999;
+}
+
+/* Custom Scrollbar */
+@layer utilities {
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+/* Aspect Ratio Utilities */
+.aspect-video {
+  aspect-ratio: 16 / 9 !important;
+  position: relative !important;
+  width: 100% !important;
+}
+
+/* Tactile Pushable Button Recipe */
+.tactile-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 28px;
+  border-radius: 6px;
+  padding: 4px 11px;
+  background-color: var(--bg-surface);
+  color: var(--text-ink);
+  font-family: 'Figtree', sans-serif;
+  font-size: 12px;
+  font-weight: 500;
+  box-shadow: var(--shadow-tactile);
+  border: 1px solid var(--border-hairline);
+  transition: background-color 150ms ease, transform 150ms ease, border-color 150ms ease;
+  white-space: nowrap;
+  user-select: none;
+  cursor: pointer;
+}
+
+.tactile-btn:hover {
+  background-color: var(--bg-surface-hover);
+  transform: translateY(-1px);
+  border-color: rgba(255, 255, 255, 0.15);
+}
+
+.light .tactile-btn:hover {
+  border-color: rgba(0, 0, 0, 0.15);
+}
+
+.tactile-btn:active {
+  transform: translateY(0);
+}
+
+/* Floating Navigation Dock */
+.nav-dock {
+  position: fixed;
+  bottom: 28px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: auto;
+  min-width: 320px;
+  max-width: 400px;
+  height: 54px;
+  border-radius: 9999px;
+  background-color: var(--bg-dock);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--border-hairline);
+  box-shadow: var(--shadow-nav-dock);
+  z-index: 50;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  padding: 6px 14px;
+  user-select: none;
+  transition: background-color 200ms ease, border-color 200ms ease, box-shadow 200ms ease;
+}
+
+@media (max-width: 640px) {
+  .nav-dock {
+    bottom: 16px;
+    padding: 6px 8px;
+    min-width: 300px;
+    max-width: 95vw;
+  }
+}
+
+/* Bottom Progressive Blur Overlay */
+.bottom-progressive-blur {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 90px;
+  pointer-events: none;
+  z-index: 40;
+  background: linear-gradient(to top, var(--bg-page) 25%, transparent 100%);
+  backdrop-filter: blur(4px);
+  mask-image: linear-gradient(to top, black 30%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to top, black 30%, transparent 100%);
+  transition: background 200ms ease;
+}
+
+/* Project CAD Card with Corner Drafting Reticles */
+.cad-project-card {
+  position: relative;
+  border: 1px dashed var(--border-dashed);
+  padding: 10px;
+  background: transparent;
+  border-radius: 4px;
+  transition: border-color 200ms ease, background-color 200ms ease;
+}
+
+.cad-project-card:hover {
+  border-color: var(--border-reticle);
+  background-color: var(--bg-surface-hover);
+}
+
+.cad-reticle {
+  position: absolute;
+  width: 7px;
+  height: 7px;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 200ms ease;
+}
+
+.cad-project-card:hover .cad-reticle {
+  opacity: 1;
+}
+
+.cad-reticle--tl {
+  top: -1px;
+  left: -1px;
+  border-top: 1.5px solid var(--border-reticle);
+  border-left: 1.5px solid var(--border-reticle);
+}
+
+.cad-reticle--tr {
+  top: -1px;
+  right: -1px;
+  border-top: 1.5px solid var(--border-reticle);
+  border-right: 1.5px solid var(--border-reticle);
+}
+
+.cad-reticle--br {
+  bottom: -1px;
+  right: -1px;
+  border-bottom: 1.5px solid var(--border-reticle);
+  border-right: 1.5px solid var(--border-reticle);
+}
+
+.cad-reticle--bl {
+  bottom: -1px;
+  left: -1px;
+  border-bottom: 1.5px solid var(--border-reticle);
+  border-left: 1.5px solid var(--border-reticle);
+}
+
+/* Skill Tag Pill */
+.skill-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  height: 24px;
+  border-radius: 6px;
+  padding: 3px 9px;
+  background-color: var(--bg-muted-subtle);
+  border: 1px solid var(--border-hairline);
+  color: var(--text-ink);
+  font-family: 'Figtree', sans-serif;
+  font-size: 12px;
+  font-weight: 500;
+  transition: background-color 150ms ease, border-color 150ms ease, color 150ms ease;
+  user-select: none;
+}
+
+.skill-pill:hover {
+  background-color: var(--bg-surface);
+  border-color: rgba(255, 255, 255, 0.2);
+  color: var(--text-brand);
+}
+
+.light .skill-pill:hover {
+  border-color: rgba(0, 0, 0, 0.2);
+}
+
+/* Work Hairline Connecting Rule */
+.work-divider-track {
+  height: 1px;
+  flex: 1;
+  background: linear-gradient(to right, transparent, var(--border-divider), transparent);
+  margin: 0 12px;
+}
+
+/* Continuous Pulsing Ping Dot */
+@keyframes status-pulse {
+  0% { transform: scale(1); opacity: 0.8; }
+  75%, 100% { transform: scale(2.2); opacity: 0; }
+}
+
+.animate-status-ping {
+  animation: status-pulse 2s cubic-bezier(0, 0, 0.2, 1) infinite;
+}
+
+/* Accessibility & Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+  *, ::before, ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .animate-status-ping,
+  .animate-ping,
+  .animate-pulse {
+    display: none !important;
+  }
+
+  img {
+    filter: none !important;
+    opacity: 1 !important;
+  }
+}
+
+/* ==========================================================================
+   Circular View Transition (Explosion / Expanding Wave Theme Switcher)
+   ========================================================================== */
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation: none;
+  mix-blend-mode: normal;
+}
+
+::view-transition-old(root) {
+  z-index: 1;
+}
+
+::view-transition-new(root) {
+  z-index: 99999;
+}
+
