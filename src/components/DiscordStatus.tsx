@@ -181,6 +181,12 @@ export function DiscordStatus() {
   const statusConfig = statusColors[status];
   const avatarUrl = "/profile/avatar.jpg";
 
+  // Process Spotify Album Art URL format
+  let spotifyArtUrl = spotify?.album_art_url || "";
+  if (spotifyArtUrl.startsWith("//")) {
+    spotifyArtUrl = `https:${spotifyArtUrl}`;
+  }
+
   return (
     <div className="w-full space-y-3.5 p-4 sm:p-5 rounded-xl bg-purple-950/30 backdrop-blur-md border border-purple-500/20 shadow-lg shadow-purple-950/20">
       {/* Top Header Row */}
@@ -226,13 +232,23 @@ export function DiscordStatus() {
 
       {/* Live Spotify Music Player */}
       {spotify ? (
-        <div className="p-3 rounded-lg bg-purple-950/40 border border-purple-500/20 flex items-center gap-3">
+        <div className="p-3 rounded-xl bg-purple-950/40 border border-purple-500/25 flex items-center gap-3">
           {/* Album Cover Art */}
-          <div className="relative w-12 h-12 rounded-md overflow-hidden flex-shrink-0 border border-purple-400/20 shadow-md">
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src={spotify.album_art_url} alt={spotify.album} className="w-full h-full object-cover" />
-            <div className="absolute inset-0 bg-purple-950/20 flex items-center justify-center">
-              <Disc className="w-5 h-5 text-purple-200 animate-spin" />
+          <div className="relative w-12 h-12 rounded-lg overflow-hidden flex-shrink-0 border border-purple-400/30 shadow-lg bg-purple-950">
+            {spotifyArtUrl ? (
+              /* eslint-disable-next-line @next/next/no-img-element */
+              <img
+                src={spotifyArtUrl}
+                alt={spotify.album || spotify.song}
+                className="w-full h-full object-cover"
+              />
+            ) : (
+              <div className="w-full h-full flex items-center justify-center bg-purple-900/40">
+                <Disc className="w-6 h-6 text-purple-300 animate-spin" />
+              </div>
+            )}
+            <div className="absolute bottom-0.5 right-0.5 p-0.5 rounded-full bg-black/80 backdrop-blur-sm border border-purple-500/40">
+              <Disc className="w-3 h-3 text-purple-300 animate-spin" />
             </div>
           </div>
 
