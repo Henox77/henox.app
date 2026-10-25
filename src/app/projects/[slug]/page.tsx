@@ -43,7 +43,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     openGraph: {
       type: "article",
       url: canonicalUrl,
-      title: `${project.title} | Naphier Awalie`,
+      title: `${project.title} | henox`,
       description: project.overview,
       images: [
         {
@@ -56,7 +56,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     },
     twitter: {
       card: "summary_large_image",
-      title: `${project.title} | Naphier Awalie`,
+      title: `${project.title} | henox`,
       description: project.overview,
       images: [ogImage],
     },

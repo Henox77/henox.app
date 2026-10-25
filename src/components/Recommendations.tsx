@@ -100,7 +100,7 @@ export function Recommendations() {
               className="tactile-btn gap-1.5 text-xs font-medium px-3.5 py-1.5 h-8 rounded-md whitespace-nowrap self-start sm:self-auto cursor-pointer"
             >
               <MessageSquarePlus className="w-3.5 h-3.5 opacity-70" />
-              <span>Recommend Naphier</span>
+              <span>Recommend henox</span>
             </button>
           </div>
         </div>

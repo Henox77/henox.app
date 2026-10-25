@@ -266,7 +266,7 @@ function ChatWidgetContent() {
               <div>
                 <div className="flex items-center gap-1.5">
                   <h3 className="font-sans text-xs font-semibold text-ink leading-none">
-                    Naphier AI
+                    henox AI
                   </h3>
                   <span className="px-1.5 py-0.5 rounded text-[9px] font-mono uppercase bg-surface border border-border-hairline text-muted-foreground">
                     {pageContext.pageType === "project_detail"

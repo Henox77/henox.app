@@ -24,7 +24,8 @@ interface SoundContextType {
 
 const SoundContext = createContext<SoundContextType | undefined>(undefined);
 
-const STORAGE_KEY = "naphier_sound_enabled";
+const STORAGE_KEY = "henox_sound_enabled";
+const LEGACY_STORAGE_KEY = "naphier_sound_enabled";
 
 export function SoundProvider({ children }: { children: React.ReactNode }) {
   const [isSoundEnabled, setIsSoundEnabled] = useState(true);
@@ -36,7 +37,7 @@ export function SoundProvider({ children }: { children: React.ReactNode }) {
     soundEngine.initUnlockListener();
 
     try {
-      const stored = localStorage.getItem(STORAGE_KEY);
+      const stored = localStorage.getItem(STORAGE_KEY) ?? localStorage.getItem(LEGACY_STORAGE_KEY);
       if (stored !== null) {
         setIsSoundEnabled(stored === "true");
       }

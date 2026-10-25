@@ -1,13 +1,13 @@
 {
-  "name": "Naphier Awalie — Full-Stack Developer",
-  "short_name": "Naphier",
-  "description": "Hi, I’m Naphier Awalie, an IT student and full-stack developer who enjoys turning ideas into practical web applications with clean interfaces, thoughtful user experiences, and reliable functionality.",
+  "name": "henox — Full-Stack Developer & Founder of Hypercord",
+  "short_name": "henox",
+  "description": "Hi, I'm henox! Full-stack software developer and founder of Hypercord, a high-performance, modular Discord client project.",
   "start_url": "/",
   "scope": "/",
   "display": "standalone",
   "orientation": "portrait-primary",
-  "background_color": "#0b0d0e",
-  "theme_color": "#0b0d0e",
+  "background_color": "#040208",
+  "theme_color": "#040208",
   "icons": [
     {
       "src": "/favicon-96x96.png",

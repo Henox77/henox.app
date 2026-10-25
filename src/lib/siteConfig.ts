@@ -2,7 +2,7 @@
  * Centralized Site & SEO Configuration for henox
  */
 
-export const SITE_URL = "https://github.com/Henox77";
+export const SITE_URL = "https://henox.app";
 
 export const SITE_NAME = "henox";
 export const SITE_TAGLINE = "Full-Stack Developer & Founder of Hypercord";

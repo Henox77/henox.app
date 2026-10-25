@@ -6,21 +6,21 @@ import { SITE_URL } from "@/lib/siteConfig";
 export const metadata: Metadata = {
   title: "Tech Stack",
   description:
-    "Explore the comprehensive toolchains, frontend frameworks, backend runtimes, databases, and UI motion libraries used by Naphier Awalie.",
+    "Explore the comprehensive toolchains, frontend frameworks, backend runtimes, databases, and UI motion libraries used by henox.",
   alternates: {
     canonical: `${SITE_URL}/tech-stack`,
   },
   openGraph: {
-    title: "Tech Stack | Naphier Awalie",
+    title: "Tech Stack | henox",
     description:
-      "Explore the comprehensive toolchains, frontend frameworks, backend runtimes, databases, and UI motion libraries used by Naphier Awalie.",
+      "Explore the comprehensive toolchains, frontend frameworks, backend runtimes, databases, and UI motion libraries used by henox.",
     url: `${SITE_URL}/tech-stack`,
   },
   twitter: {
     card: "summary_large_image",
-    title: "Tech Stack | Naphier Awalie",
+    title: "Tech Stack | henox",
     description:
-      "Explore the frontend, backend, database, and dev tools used by Naphier Awalie.",
+      "Explore the frontend, backend, database, and dev tools used by henox.",
   },
 };
 

@@ -1,7 +1,7 @@
 "use client";
 
 /**
- * Web Audio API Sound Engine for Naphier Portfolio.
+ * Web Audio API Sound Engine for henox Portfolio.
  * Produces restrained, aesthetic micro-sounds with zero external dependencies or latency.
  */
 class WebAudioSoundEngine {

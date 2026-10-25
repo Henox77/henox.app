@@ -83,7 +83,7 @@ export function RecommendModal({ isOpen, onClose }: RecommendModalProps) {
       return;
     }
     if (!relationship) {
-      setError("Please select how you know Naphier.");
+      setError("Please select how you know henox.");
       return;
     }
     if (recommendation.trim().length < 20) {
@@ -168,13 +168,13 @@ export function RecommendModal({ isOpen, onClose }: RecommendModalProps) {
         <div className="flex items-start justify-between gap-4 border-b border-border-hairline/40 pb-3.5">
           <div className="space-y-1">
             <span className="font-caps text-[11px] text-muted-foreground uppercase tracking-wider font-mono font-semibold block">
-              &lt;RECOMMEND-NAPHIER/&gt;
+              &lt;RECOMMEND-HENOX/&gt;
             </span>
             <h2 id="recommend-modal-title" className="font-sans text-base font-semibold text-ink">
               Write a Recommendation
             </h2>
             <p className="font-sans text-xs text-muted-foreground leading-relaxed">
-              Share your experience working, collaborating, or learning with Naphier. Submissions are moderated before publishing.
+              Share your experience working, collaborating, or learning with henox. Submissions are moderated before publishing.
             </p>
           </div>
 
@@ -284,7 +284,7 @@ export function RecommendModal({ isOpen, onClose }: RecommendModalProps) {
                 className="w-full h-8 px-2 rounded-md bg-page/60 border border-border-hairline text-xs text-ink focus:outline-none focus:border-muted-foreground/60 transition-colors cursor-pointer"
               >
                 <option value="" disabled>
-                  Select your relationship with Naphier
+                  Select your relationship with henox
                 </option>
                 {RELATIONSHIP_OPTIONS.map((opt) => (
                   <option key={opt} value={opt} className="bg-surface text-ink">
@@ -311,7 +311,7 @@ export function RecommendModal({ isOpen, onClose }: RecommendModalProps) {
                 minLength={20}
                 maxLength={1000}
                 rows={4}
-                placeholder="What was your experience working with Naphier? (min 20 characters)"
+                placeholder="What was your experience working with henox? (min 20 characters)"
                 value={recommendation}
                 onChange={(e) => setRecommendation(e.target.value)}
                 className="w-full p-2.5 rounded-md bg-page/60 border border-border-hairline text-xs text-ink placeholder:text-muted-foreground/50 focus:outline-none focus:border-muted-foreground/60 transition-colors resize-none leading-relaxed"
@@ -360,7 +360,7 @@ export function RecommendModal({ isOpen, onClose }: RecommendModalProps) {
                   className="w-4 h-4 mt-0.5 rounded border border-border-hairline bg-page text-brand focus:ring-0 focus:outline-none cursor-pointer"
                 />
                 <span className="font-sans text-xs text-muted-foreground leading-snug">
-                  I&rsquo;m okay with this recommendation being displayed publicly on Naphier&rsquo;s portfolio.
+                  I&rsquo;m okay with this recommendation being displayed publicly on henox&rsquo;s portfolio.
                 </span>
               </label>
             </div>

@@ -182,7 +182,7 @@ export function WorkClient() {
         {/* Action Buttons */}
         <div className="flex items-center flex-wrap gap-3 pt-2">
           <a
-            href="mailto:naphiera@gmail.com"
+            href="mailto:contact@hypercord.app"
             className="tactile-btn gap-2 h-9 px-4 rounded-md"
           >
             <Mail className="w-3.5 h-3.5 opacity-70" />
@@ -190,7 +190,7 @@ export function WorkClient() {
           </a>
 
           <a
-            href="mailto:naphiera@gmail.com?subject=Let's%20Schedule%20a%20Call"
+            href="mailto:contact@hypercord.app?subject=Let's%20Schedule%20a%20Call"
             className="tactile-btn gap-2 h-9 px-4 rounded-md"
           >
             <Calendar className="w-3.5 h-3.5 opacity-70" />

@@ -19,7 +19,7 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
 
   // Initialize theme from localStorage or system preference
   useEffect(() => {
-    const saved = localStorage.getItem("naphier_theme") as Theme | null;
+    const saved = (localStorage.getItem("henox_theme") || localStorage.getItem("naphier_theme")) as Theme | null;
     if (saved && (saved === "light" || saved === "dark" || saved === "system")) {
       setThemeState(saved);
     }
@@ -74,7 +74,7 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
     const applyThemeUpdate = () => {
       setThemeState(newTheme);
       try {
-        localStorage.setItem("naphier_theme", newTheme);
+        localStorage.setItem("henox_theme", newTheme);
       } catch {
         // Ignore localStorage errors
       }
